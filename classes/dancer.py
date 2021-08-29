@@ -15,6 +15,3 @@ class Dancer:
             team = "unassigned"
 
         return team
-
-    def set_team(self, team: str):
-        self.team = team

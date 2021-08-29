@@ -12,33 +12,46 @@ class Program:
         self.dancers[name] = dancer
     
     def add_team(self, name: str, prefs: list, max: int):
-        team = Team(name, prefs=prefs, max=max)
+        team = Team(name, prefs=prefs, max_dancers=max)
         self.teams[name] = team
         self.rosters[name] = [] # name of dancers
 
     def try_assign(self, dancer: Dancer):
         while (not dancer.assigned):
             choice = dancer.highest_pref()
-            team_pref = self.teams[choice]
 
             if choice == "unassigned":
                 self.rosters[choice].append(dancer.name)
                 dancer.assigned = True
+                print(dancer.name + " out of teams. Unassigned :(")
                 break
 
-            dancer_rank = team_pref.prefs.index(dancer.name)
-            if len(team_pref.roster) < team_pref.max_dancers:
-                team_pref.roster.append([dancer_rank, dancer.name])
-                team_pref.roster.sort(key=lambda dancer: dancer[0])
+            preffed_team = self.teams[choice]
+             
+            if dancer.name in preffed_team.prefs:
+                dancer_rank = preffed_team.prefs.index(dancer.name)
+            else: 
+                print(dancer.name + " not ranked by team " + preffed_team.name)
+                continue
+
+            if len(preffed_team.roster) < preffed_team.max_dancers:
+                preffed_team.roster.append([dancer_rank, dancer.name])
+                preffed_team.roster.sort(key=lambda dancer: dancer[0])
+                dancer.assigned = True
+                print(dancer.name + " added to team " + preffed_team.name)
             else:
-                if dancer_rank < team_pref[-1][0]:
-                    bumped = team_pref.pop()[1]
-                    team_pref.append([dancer_rank, dancer.name])
-                    
-                    self.dancers[bumped].assigned = False
-                    bumped_dancer = self.try_assign(self.dancers[bumped])
+                if dancer_rank < preffed_team.roster[-1][0]:
+                    bumped = preffed_team.roster.pop()[1]
+                    preffed_team.roster.append([dancer_rank, dancer.name])
+                    preffed_team.roster.sort(key=lambda dancer: dancer[0])
+                    dancer.assigned = True
+
+                    bumped_dancer = self.dancers[bumped]
+                    bumped_dancer.assigned = False
+                    print(dancer.name + " bumped " + bumped_dancer.name + " from " + preffed_team.name)
+                    self.try_assign(bumped_dancer)
             
 
     def run(self):
-        for name, dancer in self.dancers.items():
+        for dancer in self.dancers.values():
             self.try_assign(dancer)
