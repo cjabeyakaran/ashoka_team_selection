@@ -1,7 +1,7 @@
 from classes.dancer import Dancer
 from classes.team import Team
 
-class Program:
+class Algo:
     def __init__(self):
         self.dancers = {}
         self.teams = {}
