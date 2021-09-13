@@ -33,9 +33,9 @@ def student_upload():
         return "True"
 
 # run matching algo
-# @app.route('/match')
-# def match():
-
+@app.route('/match')
+def match():
+    return program.run_matching()
 
 if __name__ == '__main__':
     app.run()
