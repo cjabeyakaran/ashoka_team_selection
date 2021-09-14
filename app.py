@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request
 from program import Program
-from werkzeug.utils import secure_filename
+from werkzeug.utils import redirect, secure_filename
 
 app = Flask(__name__)
 
@@ -16,10 +16,10 @@ def index():
 def team_upload():
     if request.method == 'POST':
         f = request.files['file']
-        filename = secure_filename()
+        filename = secure_filename(f.filename)
         f.save(filename)
         program.handle_teams_file(filename)
-        return "True"
+        return redirect(request.referrer)
         
 
 # upload student prefs
@@ -27,10 +27,10 @@ def team_upload():
 def student_upload():
     if request.method == 'POST':
         f = request.files['file']
-        filename = secure_filename()
+        filename = secure_filename(f.filename)
         f.save(filename)
         program.handle_students_file(filename)
-        return "True"
+        return redirect(request.referrer)
 
 # run matching algo
 @app.route('/match')
