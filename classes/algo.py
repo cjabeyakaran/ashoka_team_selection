@@ -50,8 +50,16 @@ class Algo:
                     bumped_dancer.assigned = False
                     print(dancer.name + " bumped " + bumped_dancer.name + " from " + preffed_team.name)
                     self.try_assign(bumped_dancer)
+                else:
+                    print(dancer.name + " not ranked high enough by " + preffed_team.name)
             
 
     def run(self):
         for dancer in self.dancers.values():
             self.try_assign(dancer)
+
+        
+        for name, team in self.teams.items():
+            self.rosters[name] = [dancer[1] for dancer in team.roster]
+
+        return self.rosters
