@@ -11,18 +11,15 @@
 
 <body>
     <p>Team Prefs</p>
-    <form action="http://localhost:5000/teamprefs" method="POST" enctype="multipart/form-data">
-        <input type="file" name="file" />
-        <input type="submit" />
-    </form>
+    <form action="http://localhost:5000/match" method="POST" enctype="multipart/form-data">
+        <p>Team File</p>
+        <input type="file" name="team-file" />
+       
+        <p>Dancer File</p>
+        <input type="file" name="dancer-file" />
 
-    <p>Student Prefs</p>
-    <form action="http://localhost:5000/studentprefs" method="POST" enctype="multipart/form-data">
-        <input type="file" name="file" />
-        <input type="submit" />
+        <button type="submit">Match</button>
     </form>
-
-    <button action="http://localhost:5000/match">Match</button>
 </body>
 
 </html>
