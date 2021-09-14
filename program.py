@@ -46,7 +46,7 @@ class Program:
 
 
     def run_matching(self):
-        self.algo.run()
+        return self.algo.run()
 
             
 
