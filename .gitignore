@@ -6,3 +6,9 @@ __pycache__/
 
 # data
 data/
+
+# upload
+uploads/
+
+# DS Store
+**/.DS_Store
