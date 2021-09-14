@@ -31,7 +31,7 @@ class Program:
         # helper function to convert row into team Females and team Males objects
         df = pd.read_excel(file_path, index_col="Team:")
 
-        team_names = ["Raas", "Garba", "Chaahat", "Bhangra"]
+        team_names = ["Raas", "Garba", "Chaahat", "Bhangra", "STL"]
         for name in team_names:
             girl_prefs = df.loc[name, "List girl dancers/singers in order of preference:"]
             max_girls = df.loc[name, "Ideally, how many girls are you looking to recruit this year?"]
