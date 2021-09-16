@@ -5,21 +5,42 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/js/materialize.min.js"></script>
+    <title>Team Matching App</title>
 </head>
 <html>
 
 <body>
-    <p>Team Prefs</p>
-    <form action="http://localhost:5000/match" method="POST" enctype="multipart/form-data">
-        <p>Team File</p>
-        <input type="file" name="team-file" />
-       
-        <p>Dancer File</p>
-        <input type="file" name="dancer-file" />
-
-        <button type="submit">Match</button>
-    </form>
+    <div class="row valign-wrapper">
+        <div class="col s6 offset-s3">
+            <h5 class="center-align">Ashoka Dancers' and Teams' Prefs Upload</h5>
+            <form action="http://localhost:5000/match" method="POST" enctype="multipart/form-data">
+                <div class="file-field input-field">
+                    <div class="btn">
+                        <span>Dancers' Prefs</span>
+                        <input type="file" name="dancer-file" id="dancer-file" />
+                    </div>
+                    <div class="file-path-wrapper">
+                        <input class="file-path validate" type="text">
+                    </div>
+                </div>
+                <div class="file-field input-field">
+                    <div class="btn">
+                        <span>Teams' Prefs</span>
+                        <input type="file" name="team-file" id="team-file" />
+                    </div>
+                    <div class="file-path-wrapper">
+                        <input class="file-path validate" type="text">
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary center-align">Match</button>
+            </form>
+        </div>
+    </div>
 </body>
 
 </html>
