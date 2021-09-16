@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request
 from program import Program
-from werkzeug.utils import redirect, secure_filename
+from werkzeug.utils import secure_filename
 import os
 
 curr = os.getcwd()
