@@ -19,7 +19,7 @@ class Program:
                     if row[col] == "Raas" and gender == "Female":
                         prefs.append(f"{row[col]} - Males")
 
-            self.algo.add_dancer(row["Name:"], prefs)
+            self.algo.add_dancer(row["Name:"].strip(), prefs)
 
             return row
 
